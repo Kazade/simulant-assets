@@ -1,0 +1,4 @@
+language: python
+script:
+ - zip -r simulant-assets.zip *
+
