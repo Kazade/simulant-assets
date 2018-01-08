@@ -1,4 +1,14 @@
 language: python
 script:
- - zip -r simulant-assets.zip *
+ - mkdir deploy
+ - zip -r deploy/simulant-assets.zip *
 
+deploy:
+  provider: gcs
+  bucket: staging.simulant-engine.appspot.com
+  acl: public-read
+  local-dir: deploy
+  skip_cleanup: true
+  access_key_id: $GCS_ACCESS_KEY
+  secret_access_key: $GCS_SECRET
+  branch: master
